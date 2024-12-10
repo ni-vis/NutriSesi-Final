@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(45deg, #ff9719, #007bff);
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Garanta que o body ocupe toda a altura da tela */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2.5%;
+    overflow: hidden; /* Impede a rolagem do corpo */
+}
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    width: 15%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+header #logo1 {
+    height: 160px;
+    margin-top: 60%;
+    margin-left: 6px;
+}
+/* 
+h1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: -30%;
+    font-size: 50px;
+    padding-top: 5%;
+
+}
+h2 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    padding-bottom: 3%;
+} */
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    margin-top: -20%; /* margem negativa para subir a div */
+}
+.title h1 {
+    margin-top: 0; 
+    font-size: 50px;
+    padding-top: 5%; 
+    color: white;
+}
+.title h2 {
+    margin-top: 10px;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+
+
+.text {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    color: white;
+    font-size: 17px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    text-align: justify;
+    position: relative; 
+    top: 180px; 
+    width: 40%; /* quanto de tela ocupa */
+    box-sizing: border-box;
+}
+
+
+.container {
+    display: flex; 
+    justify-content: space-between;  
+    align-items: flex-start;  
+}
+
+.direita{
+    /* width: 50%; */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;     
+    width: 35%;
+    margin-right: 5%;
+    text-align: justify;
+    position: relative; 
+    top: 150px; 
+    width: 40%; /* quanto de tela ocupa */
+    box-sizing: border-box;
+}
+
+.chart-container {
+    margin-top: -20%; /* margem negativa para subir a div */
+    overflow: hidden; /* ocultar qualquer conteúdo que ultrapasse os limites */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    margin-bottom: 20%;
+    width: 200px !important;   
+    height: 200px !important; 
+    transform-origin: top left; 
+    margin-left: 170px;
+}
+
+.btn{
+    margin-top: 3rem;
+    padding: 0.4rem;
+    width: 300%;
+    cursor: pointer;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 300;
+    border-radius: 3px;
+    /* transition: all 0.3s ease; */
+}
+
+
+
+
+.dropdown {
+    margin-bottom: 10px;
+}
+
+.dropdown-content {
+    display: none; /* Escondido por padrão */
+    border: 1px solid #ddd;
+    padding: 10px;
+    color:rgb(255, 251, 251);
+
+    border-radius: 3px;
+width: 270px;
+}
+
+.dropdown.active .dropdown-content {
+    display: block; /* Exibe ao clicar */
+}
+
+.dropdown-button {
+    background-color: #ffffff;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 270px; /* Largura fixa para todos os botões */
+}
+
+
+.dropdown-button:hover {
+    background-color: #ffffff;
+}
+
+
+
+.button-container {
+    display: flex; /* Organiza os itens em linha */
+    justify-content: space-between; /* Adiciona espaço entre os botões */
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-bottom: 20px; /* Espaçamento inferior para afastar de outros elementos */
+    color:black;
+}
+
+.dropdown-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #ffffff; /* Cor de fundo do botão */
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.dropdown-button:hover {
+    background-color: #3d96f5; /* Cor de fundo ao passar o mouse */
+    color:#ffffff;
+}
+
+.dropdown-content {
+    display: none; /* Oculta o conteúdo inicialmente */
+    position: absolute;
+
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.dropdown.active .dropdown-content {
+    display: block; /* Exibe o conteúdo quando o dropdown está ativo */
+}

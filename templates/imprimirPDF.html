@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório do Cardápio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../static/css/pdfStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="icon" href="../static/img/favicon.ico" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Incluindo Chart.js -->
+</head>
+<body>
+
+    <header class="logo-container">
+        <a href="/resultados/{{ cardapio[5] }}">
+            <img src="../static/img/logo.png" class="logo"  id="logo1" alt="Logo NutriSESI">
+        </a>
+    </header>
+    <div class="pdf-container">
+        <!-- Cabeçalho -->
+        <header class="pdf-header">
+            <img src="../static/img/blackLogo.png" id="logo2" alt="LogoNutriSesi" style="width: 150px;">
+            <h1>Relatório do Cardápio</h1>
+        </header>
+        
+        <!-- Detalhes -->
+        <section class="details">
+           
+            <p><strong>Bebida:</strong> {% if cardapio[0] %}{{ cardapio[0] }}{% else %}N/A{% endif %}</p>
+            <p><strong>Sobremesa:</strong> {% if cardapio[1] %}{{ cardapio[1] }}{% else %}N/A{% endif %}</p>
+            <p><strong>Prato Principal:</strong> {{ cardapio[2] }}</p>
+            <p><strong>Salada:</strong> {% if cardapio[3] %}{{ cardapio[3] }}{% else %}N/A{% endif %}</p>
+            <p><strong>Categoria:</strong> {{ cardapio[4] }}</p>
+        </section>
+        <hr>
+
+        <!-- Estatísticas -->
+        <section class="stats">
+            <p><strong>Número total de avaliações:</strong> {{ total_avaliacoes[0] }}</p>
+            <p><strong>Número total de aprovações:</strong> {{ numero_aprovados[0] }}</p>
+            <p><strong>Número total de reprovações:</strong> {{ numero_reprovados[0] }}</p>
+        </section>
+        <hr>
+
+        <!-- Gráfico -->
+        <section class="chart">
+            <h2>Gráfico de Avaliações</h2>
+            <div id="chart-placeholder">
+                <canvas id="pizzaChart"></canvas> <!-- Canvas para o gráfico -->
+            </div>
+        
+            <!-- Legenda com quadradinhos -->
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="legend-box" style="background-color: #36a2eb;"></span>
+                    <span class="legend-text">Positivo</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-box" style="background-color: #ffce56;"></span>
+                    <span class="legend-text">Negativo</span>
+                </div>
+                <!--<div class="legend-item">
+                    <span class="legend-box" style="background-color: #4caf50;"></span>
+                    <span class="legend-text">Total</span>
+                </div>
+            </div>-->
+        
+            <script>
+                var totalAvaliacoes = {{ total_avaliacoes[0] }};
+                var numeroAprovados = {{ numero_aprovados[0] }};
+                var numeroReprovados = {{ numero_reprovados[0] }};
+                
+                var percentualPositivo = (numeroAprovados / totalAvaliacoes) * 100;
+                var percentualNegativo = (numeroReprovados / totalAvaliacoes) * 100;
+        
+                var ctx = document.getElementById('pizzaChart').getContext('2d');
+                var pizzaChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Positivo', 'Negativo'],
+                        datasets: [{
+                            data: [percentualPositivo, percentualNegativo],
+                            backgroundColor: ['#36a2eb', '#ffce56'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        layout: { padding: 10 }
+                    }
+                });
+            </script>
+        </section>
+        <hr>
+        
+
+        <!-- Comentários -->
+        <section class="comments">
+            <h2>Comentários Negativos</h2>
+            {% for comentario in comentarios %}
+            <strong><p>{{ comentario[0] }}</p></strong>
+            {% else %}
+            <p>Não há comentários negativos para este cardápio.</p>
+            {% endfor %}
+        </section>
+
+        <!-- Botão de Impressão -->
+        <button class="print-button" onclick="window.print()">Imprimir</button>
+    </div>
+</body>
+</html>

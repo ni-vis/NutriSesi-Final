@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/multiStyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Feedback</title>
+</head>
+<body>
+    <div class="fundocardapio">
+        <div class="formulario">
+            <form>
+                <div class="cardapio">
+                    <h2>CARDÁPIO DO DIA</h2>
+                </div>
+                <div class="iconecentral">
+                    <img class="icone" src="../static/img/menu.png">
+                </div>
+                <div class="avaliar">
+                    <!-- Botão de Aprovação -->
+                    <div class="like">
+                        <a href="/aprovacao/{{ session['idcardapio'] }}">
+                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                        </a>
+                    </div>
+                    <!-- Botão de Reprovação -->
+                    <div class="deslike">
+                        <a href="/reprovacao/{{ session['idcardapio'] }}">
+                            <i class="bi bi-hand-thumbs-down-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

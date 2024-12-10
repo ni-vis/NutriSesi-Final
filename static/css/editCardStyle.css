@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background: linear-gradient(45deg, #FF9719, #007BFF);  
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 100vw; /* Corrigido de 100vh para 100vw */
+}
+header {
+    height: 100px; /* Aumente a altura se precisar de mais espaço */
+    display: flex;
+    align-items: flex-start; /* Alinha o conteúdo ao topo */
+    width: 15%;
+    position: fixed;
+    top: 0;
+    left: 9px;
+}
+
+header a {
+    display: inline-block;
+}
+
+header #logo {
+    height: 160px;
+    width: auto;
+    display: block;
+    margin-top: 150px; /* Ajuste o valor conforme necessário para posicionar a logo mais abaixo */
+}
+
+
+.main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* Faz com que a main-div ocupe o espaço restante */
+}
+
+.left {
+    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente para destacar */
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Limita a largura máxima para melhor responsividade */
+    color: #fff;
+}
+
+.text-cardapio {
+    font-size: 30px;
+    opacity: 0.8;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8); /* Cor branca com transparência */
+    margin-bottom: 8px;
+}
+
+label.fs-4 {
+    font-size: 18px; /* Ajuste conforme necessário */
+}
+
+.form-select {
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    background-color: rgba(240, 240, 240, 0.9); /* Fundo claro com leve transparência */
+    border: 1px solid #ccc;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.form-select:disabled {
+    background-color: rgba(224, 224, 224, 0.9);
+    color: #888;
+    cursor: not-allowed;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #FF9719;
+}
+
+.btn-submit {
+    background-color: white;
+    color: black;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Container flex para colocar a label à esquerda do select */
+.label-select-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Ajuste a distância entre os campos */
+}
+
+/* Estilo para a label */
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-right: 10px; /* Espaço entre a label e o campo */
+    display: block;
+}
+
+/* Estilo para o select */
+select {
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    width: 100%;
+    color: #333;
+    cursor: pointer;
+}
+button {
+    font-size: 16px;  /* Ajusta o tamanho do botão */
+    padding: 12px 20px; /* Ajusta o padding do botão */
+    border-radius: 8px;
+    margin-top: 15px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .left {
+        padding: 1.5em;
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .text-cardapio {
+        font-size: 24px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    .form-select {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .btn-submit {
+        font-size: 16px;
+        padding: 12px;
+    }
+}

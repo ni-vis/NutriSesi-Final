@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+    <title>Home</title>
+    <link rel="icon" href="../static/img/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="../static/css/adm.css" />
+  </head>
+  <body>
+   
+    <header>
+      <a href="/logout">
+        <img src="../static/img/logo.png" id="logo" class="logo" alt="Logo NutriSESI">
+        <span id="hoverText">Sair</span>
+      </a>
+    </header>
+
+    <div class="main-div">
+      <div class="left">
+        <h2>Cadastro</h2>
+
+        <button class="cardapio-button" onclick="window.location.href='/cardapios'">Cardápio</button>
+       
+        <div class="horizontal-line"></div>
+        <div class="bottom-left">
+          <div class="up">
+            <button class="button-left-bottom" onclick="window.location.href='/bebida'">Bebida</button>
+            <button class="button-left-bottom" onclick="window.location.href='/salada'">Salada</button>
+          </div>
+          <div class="down">
+            <button class="button-left-bottom" onclick="window.location.href='/prato_principal'">Prato principal</button>
+            <button class="button-left-bottom" onclick="window.location.href='/sobremesa'">Sobremesa</button>
+          </div>
+         
+          
+
+        </div>
+        <button class="cardapio-button" onclick="window.location.href='/feedback'">Feedback</button>
+      </div>
+
+      <div class="right">
+        <h2 style="margin-bottom: 15%;">Resultados</h2>
+
+        
+
+        <div class="box-resultados">
+          <!-- Exibir mensagem se não houver cardápios -->
+          {% if not cardapios %}
+            <h2>Não há <br>resultados <br>disponíveis! ❌</h2>
+          {% else %}
+            <!-- Loop para exibir cardápios existentes -->
+            {% for cardapio in cardapios %}
+            
+            <a href="/resultados/{{cardapio[0]}}" class="button-resultados" 
+               style="text-align: center; display: inline-block; text-transform: capitalize; width: 100%; padding-top: 30px;">
+                <h3 style="margin: 0; text-transform: capitalize;">{{cardapio[1]}} {{cardapio[2]}}</h3>
+            </a>
+
+
+          
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <!--alert SAIR -->
+  <script>
+    const logo = document.getElementById('logo');
+    const hoverText = document.getElementById('hoverText');
+
+    logo.addEventListener('mouseover', () => {
+        hoverText.style.display = 'block'; // Exibe o texto
+    });
+
+    logo.addEventListener('mouseout', () => {
+        hoverText.style.display = 'none'; // Oculta o texto
+    });
+  </script>
+
+
+
+</html>

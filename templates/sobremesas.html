@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Cadastro de Sobremesas</title>
+    <link rel="icon" href="../static/img/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="./static/css/bebStyle.css">
+</head>
+
+<body>
+    <header class="container-fluid">
+        <a href="/adm">
+            <img src="../static/img/logo.png" class="logo" alt="Logo NutriSESI">
+        </a>
+    </header>
+
+    <div class="container">
+        <h1>Sobremesas</h1>
+    </div>
+
+    <form class="form" action="/cadsobremesas" method="post" autocomplete="off"> <!-- autocomplete="off" para desligar sugesão de preenchimento-->
+        <input class="input_under" type="text" name="nome_sobremesa" id="nome_sobremesa" placeholder="Registre aqui o nome da sobremesa">
+        <input type="submit" class="button" value="Cadastrar">
+    </form>
+
+
+    <div class="horizontal-line"></div>
+
+    <div class="itensregistrados">
+        <h3>Itens Registrados</h3>
+    </div>
+    {% if erro %}
+      <div class="sem-itens">
+        <div class="sem-item">
+          <p>
+            {{ erro }}
+          </p>
+        </div>
+      </div>
+      {% endif %}
+    <div class="campo-itens">
+        {% if not sobremesas and not erro %}
+            <div class="sem-itens">
+                <div class="sem-item">
+                    <p>Não há sobremesas<br> cadastradas!</p>
+                </div>
+            </div>
+        {% else %}
+            {% for sobremesa in sobremesas %}
+            <div class="itens">
+                <div class="item">
+                    <p>{{ sobremesa[1] }}</p>
+                </div>
+                <div class="botoes">
+                    <div class="excluir">
+                        <a href="/excluir/sobremesa/{{ sobremesa[0] }}" onclick="excluir(event, this.href)">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                    <div class="editar">
+                        <a onclick="editar('{{ sobremesa[0] }}','{{ sobremesa[1] }}')">
+                           <i class="bi bi-pencil"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function editar(id, sobremesa) {
+        Swal.fire({
+            title: 'Editar Sobremesa',
+            input: 'text',
+            inputLabel: 'Novo nome da sobremesa:',
+            inputValue: sobremesa,
+            showCancelButton: true,
+            confirmButtonText: 'Salvar',
+            cancelButtonText: 'Cancelar',
+            inputValidator: (value) => {
+                if (!value.trim()) {
+                    return 'O nome da sobremesa não pode estar vazio!';
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const novaSobremesa = result.value.trim();
+                const encodedSobremesa = encodeURIComponent(novaSobremesa); // Codifica caracteres especiais
+                console.log("Redirecionando para:", `/editar_sobremesa/${id}/${encodedSobremesa}`); // Para depuração
+                window.location.href = `/editar_sobremesa/${id}/${encodedSobremesa}`;
+            }
+        });
+    }
+</script>
+
+<script>
+    function excluir(event, url) {
+  event.preventDefault();
+
+  Swal.fire({
+    title: "Atenção",
+    text: "Você deseja realmente excluir este item?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sim, excluir!",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Navegar para a URL de exclusão
+      fetch(url, { method: "GET" })
+        .then((response) => response.text())
+        .then((html) => {
+          // Criar um elemento temporário para analisar o conteúdo retornado
+          const tempDiv = document.createElement("div");
+          tempDiv.innerHTML = html;
+
+          // Verificar se há uma mensagem de erro específica no conteúdo retornado
+          const erro = tempDiv.querySelector(".sem-itens .sem-item p");
+          if (erro) {
+            const erroTexto = erro.textContent.trim();
+            if (erroTexto === "Não há sobremesas cadastradas!") {
+              // Atualizar a interface para mostrar lista vazia
+              document.querySelector(".campo-itens").innerHTML = tempDiv.querySelector(".campo-itens").innerHTML;
+              fetch('/sobremesa', { method: "GET" });
+            } else {
+              // Exibir erro específico
+              Swal.fire({
+                title: "Erro",
+                text: erroTexto,
+                icon: "error",
+                confirmButtonText: "OK",
+              });
+            }
+          } else {
+            // Atualizar a página com o conteúdo retornado
+            document.documentElement.innerHTML = html;
+          }
+        })
+        .catch((error) => {
+          console.error("Erro na requisição:", error);
+          Swal.fire({
+            title: "Erro",
+            text: "Ocorreu um problema ao excluir o item. Tente novamente mais tarde.",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+        });
+    }
+  });
+}
+
+  </script>
+</html>

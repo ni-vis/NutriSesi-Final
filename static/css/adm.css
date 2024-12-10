@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+
+body {
+    background: linear-gradient(45deg, #FF9719,#007BFF );  
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 100vh;
+}
+
+header {
+    height: 100px; /* Aumente a altura se precisar de mais espaço */
+    display: flex;
+    align-items: flex-start; /* Alinha o conteúdo ao topo */
+    width: 15%;
+    position: fixed;
+    top: 0;
+    left: 9px;
+}
+
+header a {
+    display: inline-block;
+}
+
+header #logo {
+    height: 160px;
+    width: auto;
+    display: block;
+    margin-top: 0px; /* Ajuste o valor conforme necessário para posicionar a logo mais abaixo */
+}
+
+
+#hoverText {
+    /* header */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 30%; 
+    transform: translateX(-30%); 
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.main-div{
+    display: flex;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    padding: 1em;
+    width: 747px;
+    color:#fff;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: left;
+    width: 747px;
+    color:#fff;
+}
+
+.cardapio-button{
+    color: black;
+    background-color: white;
+    width: 300px;
+    height: 80px;
+    font-size: 27px;
+    border-radius: 10px;
+    margin: 30px 5px;
+    cursor: pointer;
+    margin-bottom: 8%;
+    
+}
+button{
+    color: black;
+    background-color: white;
+    width: 300px;
+    height: 80px;
+    font-size: 27px;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+    margin-top: 2em;
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #d9d9d9;
+    transition: 0.2s ease-in-out;
+    box-shadow: rgba(3, 3, 3, 0.2) 5px, 5px, 5px;
+
+}
+
+h2{
+    display: flex;
+    font-size: 50px;
+    margin-top: 1em;
+    margin-bottom: 20px;
+    
+}
+
+
+.button-resultados{
+    color: black;
+    background-color: white;
+    width: 600px;
+    height: 100px;
+    font-size: 27px;
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    text-decoration: none; /* Remove o sublinhado, se existir */
+    font-weight: bold;
+}
+
+.box-resultados{
+    width: 650px;
+    max-height: 500px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: start;
+    overflow-y: auto;
+}
+
+.horizontal-line {
+    width: 85%;
+    height: 1.7px;
+}

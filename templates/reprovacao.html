@@ -1,0 +1,196 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+<div class="fundocomentarios container-fluid">
+    <div class="row p-5">
+        <h1 class="display-4 text-center text-white mt-2">AVALIAÇÃO</h1>
+        <h2 class="display-5 text-center d-flex flex-column text-white mt-4 mb-2">{{ cardapio[4] }}</h2>
+    </div>
+    <div class="row g-3">
+        
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center my-2">
+            <div class="square" onclick="prato()">
+                <img src="/static/img/icones/pratoprincipal.png" alt="" class="m-auto icon-img">
+                <p class="text-warning text-center">Prato principal: </br>
+                <span class="fs-5 text-white">{{cardapio[2]}}</span></p>
+                <p class="fs-5 text-danger text-center" id="respostaprato"></p>
+            </div>
+            <div id="prato" class="hidden-section">
+                <div class="row g-1">
+                    <div class="col"><div class="comentario" onclick="comentario_prato(event)">Textura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_prato(event)">Sabor</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_prato(event)">Aparência</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_prato(event)">Temperatura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_prato(event)">Este eu gostei</div></div>
+                </div>
+            </div>
+        </div>
+        {% if cardapio[0] %}
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center my-2">
+            <div class="square" onclick="bebida()">
+                <img src="/static/img/icones/bebida.png" alt="" class="m-auto icon-img">
+                <p class="text-warning text-center">Bebida: </br>
+                    <span class="fs-5 text-white">{{cardapio[0]}}</span></p>
+                <p class="fs-5 text-danger text-center" id="respostabebida"></p>
+            </div>
+            <div id="bebida" class="hidden-section">
+                <div class="row g-1">
+                    <div class="col"><div class="comentario" onclick="comentario_bebida(event)">Textura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_bebida(event)">Sabor</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_bebida(event)">Aparência</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_bebida(event)">Temperatura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_bebida(event)">Este eu gostei</div></div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if cardapio[1] %}
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center my-2">
+            <div class="square" onclick="sobremesa()">
+                <img src="/static/img/icones/sobremesa.png" alt="" class="m-auto icon-img">
+                <p class="text-warning text-center">Sobremesa: </br>
+                    <span class="fs-5 text-white">{{cardapio[1]}}</span></p>
+                <p class="fs-5 text-danger text-center" id="respostasobremesa"></p>
+            </div>
+            <div id="sobremesa" class="hidden-section">
+                <div class="row g-1">
+                    <div class="col"><div class="comentario" onclick="comentario_sobremesa(event)">Textura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_sobremesa(event)">Sabor</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_sobremesa(event)">Aparência</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_sobremesa(event)">Temperatura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_sobremesa(event)">Este eu gostei</div></div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if cardapio[3] %}
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center my-2">
+            <div class="square" onclick="salada()">
+                <img src="/static/img/icones/salada.png" alt="" class="m-auto icon-img">
+                <p class="text-warning text-center">Salada: </br>
+                    <span class="fs-5 text-white">{{cardapio[3]}}</span></p>
+                <p class="fs-5 text-danger text-center" id="respostasalada"></p>
+            </div>
+            <div id="salada" class="hidden-section">
+                <div class="row g-1">
+                    <div class="col"><div class="comentario" onclick="comentario_salada(event)">Textura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_salada(event)">Sabor</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_salada(event)">Aparência</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_salada(event)">Temperatura</div></div>
+                    <div class="col"><div class="comentario" onclick="comentario_salada(event)">Este eu gostei</div></div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-12 d-flex flex-column justify-content-center align-items-center mt-5">
+            <a href="/concluido">
+                <button class="prosseguir" onclick="enviarReprovacao()">Concluir</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function prato() {
+        const prato = document.getElementById('prato')
+        prato.style.display === 'none' ? prato.style.display = 'block' : prato.style.display = 'none'
+    }
+    function comentario_prato(event) {
+        let resposta = document.getElementById('respostaprato')
+        resposta.innerText = event.target.innerText
+        if (resposta.innerText === "Este eu gostei") {
+            resposta.classList.remove("text-danger");  // Remove a classe 'text-danger'
+            resposta.classList.add("text-success");    // Adiciona a classe 'text-success'
+        } else {
+            // Caso contrário, mantém ou adiciona a classe 'text-danger' (se necessário)
+            resposta.classList.remove("text-success");
+            resposta.classList.add("text-danger");
+        }
+        prato()
+    }
+    function bebida() {
+        const bebida = document.getElementById('bebida')
+        bebida.style.display == 'none' ? bebida.style.display = 'block' : bebida.style.display = 'none'
+    }
+    function comentario_bebida(event) {
+        let resposta = document.getElementById('respostabebida')
+        resposta.innerText = event.target.innerText
+        if (resposta.innerText === "Este eu gostei") {
+            resposta.classList.remove("text-danger");  // Remove a classe 'text-danger'
+            resposta.classList.add("text-success");    // Adiciona a classe 'text-success'
+        } else {
+            // Caso contrário, mantém ou adiciona a classe 'text-danger' (se necessário)
+            resposta.classList.remove("text-success");
+            resposta.classList.add("text-danger");
+        }
+        bebida()
+    }
+    function sobremesa() {
+        const sobremesa = document.getElementById('sobremesa')
+        sobremesa.style.display == 'none' ? sobremesa.style.display = 'block' : sobremesa.style.display = 'none'
+    }
+    function comentario_sobremesa(event) {
+        let resposta = document.getElementById('respostasobremesa')
+        resposta.innerText = event.target.innerText
+        if (resposta.innerText === "Este eu gostei") {
+            resposta.classList.remove("text-danger");  // Remove a classe 'text-danger'
+            resposta.classList.add("text-success");    // Adiciona a classe 'text-success'
+        } else {
+            // Caso contrário, mantém ou adiciona a classe 'text-danger' (se necessário)
+            resposta.classList.remove("text-success");
+            resposta.classList.add("text-danger");
+        }
+        sobremesa()
+    }
+    function salada() {
+        const sobremesa = document.getElementById('salada')
+        sobremesa.style.display == 'none' ? sobremesa.style.display = 'block' : sobremesa.style.display = 'none'
+    }
+    function comentario_salada(event) {
+        let resposta = document.getElementById('respostasalada')
+        resposta.innerText = event.target.innerText
+        if (resposta.innerText === "Este eu gostei") {
+            resposta.classList.remove("text-danger");  // Remove a classe 'text-danger'
+            resposta.classList.add("text-success");    // Adiciona a classe 'text-success'
+        } else {
+            // Caso contrário, mantém ou adiciona a classe 'text-danger' (se necessário)
+            resposta.classList.remove("text-success");
+            resposta.classList.add("text-danger");
+        }
+        salada()
+    }
+
+    function enviarReprovacao() {
+        const pratoprincipalElem = document.getElementById('respostaprato');
+        const bebidaElem = document.getElementById('respostabebida');
+        const sobremesaElem = document.getElementById('respostasobremesa');
+        const saladaElem = document.getElementById('respostasalada');
+
+        const pratoprincipal = pratoprincipalElem ? pratoprincipalElem.innerText : null;
+        const bebida = bebidaElem ? bebidaElem.innerText : null;
+        const sobremesa = sobremesaElem ? sobremesaElem.innerText : null;
+        const salada = saladaElem ? saladaElem.innerText : null;
+
+        fetch('/salvar_reprovacao', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                comments_prato: pratoprincipal,
+                comments_bebida: bebida,
+                comments_sobremesa: sobremesa,
+                comments_salada: salada
+            })
+        }).then(response => {
+            if (response.ok) {
+                window.location.href = "/";
+            } else {
+               //alert('Erro ao enviar feedback');
+            }
+        }).catch(error => {
+            console.error('Erro:', error);
+            //alert('Erro ao enviar feedback');
+        });
+    }
+</script>
+{% endblock %}

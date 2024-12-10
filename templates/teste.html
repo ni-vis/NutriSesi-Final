@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download em PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>Exemplo de Gerador de PDF</h1>
+    <p>Esta página pode ser baixada como PDF.</p>
+    <p>aaaaaaaa</p>
+
+    <button id="download">Baixar PDF</button>
+
+    <script>
+        document.getElementById("download").addEventListener("click", function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Adiciona o conteúdo ao PDF
+            doc.text("Exemplo de PDF gerado diretamente do navegador!", 10, 20);
+            doc.text("Este arquivo foi gerado usando a biblioteca jsPDF.", 10, 30);
+            
+            // Faz o download do PDF
+            doc.save("exemplo.pdf");
+        });
+    </script>
+</body>
+</html>

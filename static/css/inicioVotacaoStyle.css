@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+a {
+    text-decoration: inherit; /* O link herda o estilo de sublinhado do elemento pai */
+    color: inherit;           /* O link herda a cor do texto do elemento pai */
+}
+html, body{
+    height: 100%;
+}
+
+.fundohome{
+    background-image: url('http://localhost:5000/static/img/home.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ed3237;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.linha1{
+    width: 80%;
+    height: 4px;
+    background-color: #ed3237;
+    display: flex;
+    margin: 7% 7% 4% 7%;
+}
+
+.linha2{
+    width: 80%;
+    height: 4px;
+    background-color: #ed3237;
+    display: flex;
+    margin: 4% 7% 4% 7%;
+}
+
+.centro{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 9% 0 3% 0;
+}
+
+.enfeite{
+    width: 40%;
+
+}
+
+.gif{
+    width: 100%;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin: 15%;
+}
+
+h3{
+    
+    height: 100%;
+    width: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #fff;
+    background-color: #ffda00;
+    border-radius: 25px;
+    box-shadow: 5px 5px 0 3px #e2c100;
+}
+
+.fundocardapio{
+    background-image: url('/static/fundos/fundo1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.formulario{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form{
+    width: 70%;
+    height: 900px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 60px;
+}
+
+h2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 15% 0 0 0;
+}
+
+.iconecentral{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icone {
+    width: 60%;
+}
+
+.avaliar{
+    width: 70%;
+    height: 15%;
+    margin: -5%;
+    font-size: 70PX;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deslike{
+    width: 30%;
+    height: 100%;
+    background-color: red;
+    border-radius: 100%;
+    color: #fff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like{
+    width: 30%;
+    height: 100%;
+    background-color: rgb(12, 183, 12);
+    border-radius: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fundoavalie{
+    background-image: url('/static/fundos/fundo2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.avalie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 14%;
+    width: 50%;
+    height: 65%;
+}
+
+.opcoes{
+    width: 90%;
+    height: 100%;
+    background-color: #0000008b;
+    margin: 5% 0 5% 0;
+    text-align: center;
+    border-radius: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+h5{
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 2%;
+}
+
+.opcao{
+    width: 75%;
+}
+
+.fundoprato{
+    background-image: url('/static/fundos/fundo3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.iconeprato {
+    width: 85%;
+}
+/* Estilo para o "X" quase invisível no canto superior esquerdo */
+.x-corner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+    color: rgba(147, 147, 147, 0.088); /* Cor quase invisível */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.x-corner:hover {
+    color: rgba(188, 188, 188, 0.095); /* Torna o "X" mais visível ao passar o mouse */
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápios para Votação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card {
+            background: #fff;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            /* Reduzindo largura do card */
+            max-width: 400px;
+            /* Limite de largura */
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #007bff;
+        }
+
+        .card p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function abrirModal(cardapioId) {
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("confirmarVotacao").onclick = function () {
+                window.location.href = "/votacao/" + cardapioId;
+            };
+        }
+        function fecharModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Cardápios para Votação</h1>
+
+    {% if not cardapios %}
+    <p style="text-align: center; color: #666;">Nenhum cardápio disponível no momento.</p>
+    {% else %}
+
+    {% for cardapio in cardapios %}
+    <div class="card">
+        <div>
+
+            <p>Categoria:
+                {% if cardapio[6] == 1 %}
+                Café da Manhã
+                {% elif cardapio[6] == 2 %}
+                Almoço
+                {% elif cardapio[6] == 3 %}
+                Lanche da Tarde
+                {% else %}
+                Categoria desconhecida
+                {% endif %}
+            </p>
+        </div>
+        <button class="button" onclick="abrirModal('{{ cardapio[0] }}')">Gerar Votação</button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <pre>{{ cardapio }}</pre>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <p>Deseja iniciar a votação para este cardápio?</p>
+            <button id="confirmarVotacao" class="button">Sim</button>
+            <button class="button" onclick="fecharModal()">Não</button>
+        </div>
+    </div>
+</body>
+
+</html>

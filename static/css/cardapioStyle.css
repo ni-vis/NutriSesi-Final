@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color:inherit;
+}
+
+body {
+    background: linear-gradient(45deg, #FF9719,#007BFF );  
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 100vh;
+}
+header a {
+    display: inline-block;
+}
+
+.logo {
+    max-height: 160px;
+    width: auto;
+    display: block;
+    top: -70px;
+    left: -1px;
+    height: 160px;
+}
+
+
+.main-div{
+    display: flex;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    padding: 1em;
+    width: 747px;
+    color:#fff;
+}
+
+.right{
+    display: flex;
+     margin-top: -20px; /* Ajuste o valor para a quantidade exata que deseja mover para cima */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: left;
+    width: 747px;
+    color:#fff;
+}
+
+
+.cardapio-button{
+    color: black;
+    background-color: white;
+    width: 300px;
+    height: 80px;
+    font-size: 27px;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+    margin-bottom: 10%; 
+}
+.button-resultados {
+    border-radius: 5px; 
+    padding: 10px 15px; 
+    font-size: 1.1rem; 
+    width: 100%; 
+    text-align: left; 
+}
+
+button{
+    color: black;
+    background-color: white;
+    width: 300px;
+    height: 80px;
+    font-size: 27px;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+    margin-top: 2em;
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #d9d9d9;
+    transition: 0.2s ease-in-out;
+    box-shadow: rgba(3, 3, 3, 0.2) 5px, 5px, 5px;
+}
+
+h2{
+    display: flex;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.button-resultados{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2em;
+    padding-right: 2em;
+    color: black;
+    background-color: white;
+    width: 600px;
+    height: 80px;
+    font-size: 29px;
+    border-radius: 15px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.box-resultados{
+    width: 650px;
+    max-height: 500px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: start;
+    overflow-y: auto;
+}
+
+.horizontal-line {
+    width: 85%;
+    height: 1.7px;
+}
+.text-cardapio{
+    font-size: 30px;
+    opacity: 50%;
+}
+.dropdown-btn{
+
+    color: black;
+    background-color: white;
+    width: 300px;
+    height: 46px;
+    font-size: 27px;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+    margin-top: 2em;
+    margin-right: 1em;
+}
+h1{
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40%;
+}
+select{
+    margin-bottom: 15%;
+    margin-left: 40%;
+}
+
+#opcoes-pratoprincipal .form-select,
+#opcoes-bebida .form-select,
+#opcoes-salada .form-select,
+#opcoes-sobremesa .form-select {
+    margin-top: -25px; /* Ajuste o valor conforme necessário */
+}
+/* Container flex para colocar a label à esquerda do select */
+.label-select-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Ajuste a distância entre os campos */
+}
+
+/* Estilo para a label */
+label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-right: 10px; /* Espaço entre a label e o campo */
+    display: block;
+}
+
+/* Estilo para o select */
+select {
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    width: 100%;
+    color: #333;
+    cursor: pointer;
+}
+
+select:disabled {
+    background-color: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+select:focus {
+    outline: none;
+    border-color: #FF9719;
+}
+
+button {
+    font-size: 16px;  /* Ajusta o tamanho do botão */
+    padding: 12px 20px; /* Ajusta o padding do botão */
+    border-radius: 8px;
+    margin-top: 15px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.swal2-confirm {
+    font-size: 14px; /* Ajusta o tamanho da fonte */
+    height: 50px;
+}

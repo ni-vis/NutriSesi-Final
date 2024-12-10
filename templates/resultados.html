@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="../static/css/resultadosStyle.css">
+    <link rel="icon" href="../static/img/favicon.ico" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="/adm">
+            <img src="../static/img/logo.png" id="logo1" alt="LogoNutriSesi">
+        </a>
+    </header>
+
+    <div class="title">
+        <h1>Relatório de resultados</h1>
+        <h2>{{data_cardapio}}</h2>
+    </div>
+
+    <div class="container">
+        <div class="text">
+            <div class="button-container">
+                <div class="dropdown">
+                    <button class="dropdown-button" onclick="toggleDropdown()"><strong>Ver Cardápio</strong></button>
+                    <div class="dropdown-content">
+                        <p>
+                            <strong>Bebida:</strong> {% if cardapio[0] %}{{ cardapio[0] }}{% else %}N/A{% endif %}<br>
+                            <strong>Sobremesa:</strong> {% if cardapio[1] %}{{ cardapio[1] }}{% else %}N/A{% endif %}<br>
+                            <strong>Prato Principal:</strong> {{ cardapio[2] }}<br>
+                            <strong>Salada:</strong> {% if cardapio[3] %}{{ cardapio[3] }}{% else %}N/A{% endif %}<br>
+                            <strong>Categoria:</strong> {{ cardapio[4] }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-button" onclick="toggleDropdown2()"><strong>Ver Avaliações</strong></button>
+                    <div class="dropdown-content">
+                        <p style="text-align: justify; hyphens: auto; word-spacing: 1px; line-height: 1.6; letter-spacing: 0.5px;">
+                            Avaliações:<strong> {{total_avaliacoes[0]}} </strong> <br>
+                            Aprovações:<strong> {{numero_aprovados[0]}}</strong><br>
+                            Reprovações:<strong> {{numero_reprovados[0]}}</strong> 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropdown-button" onclick="toggleDropdown3()"><strong>Ver Comentários</strong></button>
+                    <div class="dropdown-content">
+                        {% for comentario in comentarios %}
+                        <p>{{ comentario[0] }}</p>
+                        {% else %}
+                        <p>Não há comentários negativos para este cardápio.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <div class="direita">
+            <div class="chart-container">
+                <canvas id="pizzaChart" width="100" height="100"></canvas>
+            </div>
+
+             <!-- Formulário para enviar o gráfico como base64 -->
+            <!--<form id="formPdf" method="POST" action="/gerar-pdf">
+                <input type="hidden" name="graficoImagem" id="graficoImagem">-->
+                <form action="/gerar_pdf/{{ cardapio[5] }}" method="get">
+                    <button type="submit" class="btn btn-primary"><strong>Gerar PDF</strong></button>
+                </form>
+        </div>
+    </div>
+
+    <script>
+        // Obtendo os dados dinâmicos do servidor via Jinja (certifique-se de que esses dados são passados corretamente)
+        var totalAvaliacoes = {{ total_avaliacoes[0] }};
+        var numeroAprovados = {{ numero_aprovados[0] }};
+        var numeroReprovados = {{ numero_reprovados[0] }};
+        
+        // Calculando os percentuais de avaliações positivas e negativas
+        var percentualPositivo = (numeroAprovados / totalAvaliacoes) * 100;
+        var percentualNegativo = (numeroReprovados / totalAvaliacoes) * 100;
+        
+        // Configuração do gráfico de pizza
+        var ctx = document.getElementById('pizzaChart').getContext('2d');
+        var pizzaChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Positivo', 'Negativo'],
+                datasets: [{
+                    data: [percentualPositivo, percentualNegativo],
+                    backgroundColor: ['#36a2eb', '#ffce56'],
+                    borderWidth: 0 // Remove a borda ao redor das fatias
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            // Customizando o tooltip para mostrar o total de avaliações
+                            afterBody: function () {
+                                return `Total: ${totalAvaliacoes}`;
+                            }
+                        }
+                    },
+                    legend: {
+                        display: false // Oculta a legenda
+                    }
+                },
+                layout: { padding: 10 }
+            }
+        });
+    </script>
+
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('active');
+        }
+    
+        function toggleDropdown2() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns[1].classList.toggle('active'); // Selecionando o segundo dropdown
+        }
+    
+        function toggleDropdown3() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns[2].classList.toggle('active'); // Selecionando o terceiro dropdown
+        }
+    </script>
+    
+
+    
+    
+</body>
+</html>

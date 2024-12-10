@@ -1,0 +1,188 @@
+/* Estilo geral */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    font-size: 18px; /* Aumenta o tamanho da fonte para toda a página */
+}
+/* Estilo para a visualização no navegador */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #FF9719, #007BFF); /* Gradiente de fundo */
+    background-repeat: no-repeat;
+    background-size: cover; /* Certifica-se de que o fundo cubra toda a tela */
+}
+/* Estilos para o logo pequeno e fundo colorido (fora do PDF) */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #FF9719, #007BFF); /* Gradiente de fundo */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Logo pequeno no topo esquerdo */
+.logo-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 999; /* Garante que o logo fique em cima de outros elementos */
+}
+
+#logo1 {
+    width: 160px; /* Ajuste o tamanho do logo conforme necessário */
+    display: block;
+    margin-top: -6px; /* Ajuste o valor conforme necessário para posicionar a logo mais abaixo */
+    margin-left: -6px;
+}
+
+/* Evitar fundo e logo no PDF */
+@media print {
+    body {
+        background: none !important; /* Remove o fundo no PDF */
+    }
+
+    .logo-container {
+        display: none; /* Remove o logo do PDF */
+    }
+}
+
+
+/* Evitar fundo no PDF */
+@media print {
+    body {
+        background: none !important; /* Remove o fundo no PDF */
+    }
+}
+
+
+/* Container do PDF */
+.pdf-container {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+.pdf-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.logo1 {
+    height: 5px;
+}
+
+.pdf-header h1 {
+    font-size: 32px; /* Aumenta o tamanho do título */
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    flex: 1;
+}
+
+/* Detalhes */
+.details, .stats, .comments {
+    margin-bottom: 20px;
+}
+
+.details p, .stats p, .comments p {
+    font-size: 18px; /* Aumenta o tamanho da fonte dos detalhes */
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Gráfico */
+/* Impede a quebra de página dentro da seção do gráfico */
+.chart {
+    page-break-inside: avoid;
+    margin: 20px 0;
+}
+
+
+#chart-placeholder {
+    width: 100%;
+    height: 300px;
+    background: #f0f0f0;
+    /* border: 1px dashed #ccc; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: #999; */
+}
+
+/* Comentários */
+.comments h2 {
+    font-size: 26px; /* Aumenta o tamanho do título de comentários */
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Títulos e divisores */
+h1, h2 {
+    font-weight: 500;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* Estilos do botão de impressão */
+.print-button {
+    display: block;
+    margin: 50px auto; /* Aumenta a margem superior para afastar mais o botão */
+    padding: 14px 30px; /* Aumenta o padding para um botão maior */
+    font-size: 20px; /* Tamanho da fonte do botão */
+    background-color: white;
+    color: #333;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.print-button:hover {
+    background-color: #f1f1f1; /* Cor de fundo mais clara ao passar o mouse */
+
+}
+/* Esconde o botão de imprimir ao gerar o PDF */
+@media print {
+    .print-button {
+        display: none; /* Esconde o botão quando a página é impressa */
+    }
+}
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Espaço entre o gráfico e a legenda */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Espaço entre os itens da legenda */
+}
+
+.legend-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.legend-text {
+    font-size: 16px;
+    color: #333;
+}

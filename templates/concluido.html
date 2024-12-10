@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Agradecimento</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #4CAF50; /* Verde */
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .thank-you-container {
+      text-align: center;
+    }
+
+    .thank-you-container h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .thank-you-container .check-icon {
+      width: 150px;
+      height: 150px;
+      background-color: #ffffff;
+      color: #4CAF50;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .thank-you-container .check-icon i {
+      font-size: 5rem;
+    }
+  </style>
+  <!-- Link para os ícones do Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+  <div class="thank-you-container">
+    <h1>Obrigado por sua Avaliação!</h1>
+    <div class="check-icon">
+      <i class="bi bi-check-lg"></i>
+    </div>
+  </div>
+</body>
+</html>
+
+
+   <script>
+    window.onload = function() {
+  setTimeout(function() {
+    // Substitua 'https://www.exemplo.com' pela URL que deseja abrir
+    window.location.href = '/esperavotacao';
+  }, 3000); // 3000 milissegundos = 3 segundos
+};
+
+   </script>
+   </body>
+</html>
