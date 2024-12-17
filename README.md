@@ -46,7 +46,7 @@ O sistema foi criado inicialmente para uma campanha contra o desperdício de ali
 - [Geovanna Antunes](https://github.com/geovanninhaA) - **Scrum Master**: Responsável por facilitar o processo e remover impedimentos para o progresso do time.
 - [Gustavo Henrique](https://github.com/GustaDev07) - **Product Owner (PO)**: Gerenciou o backlog e definiu prioridades com base nos objetivos do projeto.
 - [Nicole Vidal](https://github.com/ni-vis) - **Tech Lead**: Coordenou as decisões técnicas e garantiu a qualidade do código.
-- [Matheus Guimarães]](https://github.com/SeuUsuario) - **Desenvolvedor(a)**: Implementou funcionalidades e contribuiu para a lógica de negócio do sistema.
+- [Matheus Guimarães]](https://github.com/MTheuzin) - **Desenvolvedor(a)**: Implementou funcionalidades e contribuiu para a lógica de negócio do sistema.
 
 ## Licença
 Este projeto foi desenvolvido como parte de um curso técnico e não possui licença específica para uso comercial.
